@@ -1,10 +1,10 @@
 
 function kilometerToMeter(km) {
     if (km == null) /*check if input is null or not*/ {
-        return console.log("Invalid input!!");
+        return console.log("Input cannot be null !!");
     }
     if (km < 0 || typeof km === "string") /*checking if input is valid or not*/ {
-        return console.log("Invalid input!!");
+        return console.log("Input cannot be negetive or string !!");
     }
     let meter = km * 1000; //calculating km to m
     return meter;
@@ -61,34 +61,67 @@ else {
 
 function hotelCost(days) {
     if (days == null) /*check if input is null or not*/ {
-        return console.log("Invalid input!!");
+        return console.log("Input cannot be null !!");
     }
-    if (days < 0 || days % 1 != 0 || typeof days === "string")
+    if (days < 0 || days % 1 != 0 || typeof days === "string")/*check if input is valid or not*/ {
+        return console.log("Input cannot be negetive or string or float number!!");
+    }
 
-        let cost = 0;
+    let cost = 0;
     if (days <= 10) {
-        cost = days * 100;
+        cost = days * 100; //calculating cost between 1-10 days
     }
     else if (days <= 20) {
-        let firstTenDaysCost = 10 * 100;
-        let days_remaining = days - 10;
-        let restOfTheDaysCost = days_remaining * 80;
+        let firstTenDaysCost = 10 * 100; // calculating cost between 1-10 days
+        let days_remaining = days - 10; // calculating remaining days
+        let restOfTheDaysCost = days_remaining * 80; // calculating cost between 11- remaining days till 20days
         cost = firstTenDaysCost + restOfTheDaysCost;
     }
     else {
-        let firstTenDaysCost = 10 * 100;
-        let secondTenDaysCost = 10 * 80;
-        let days_remaining = days - 20;
-        let restOfTheDaysCost = days_remaining * 50;
-        cost = firstTenDaysCost + secondTenDaysCost + restOfTheDaysCost;
+        let firstTenDaysCost = 10 * 100; // calculating cost between 1-10 days
+        let secondTenDaysCost = 10 * 80; // calculating cost between 11-20 days
+        let days_remaining = days - 20; // calculating remaining days
+        let restOfTheDaysCost = days_remaining * 50; // calculating cost of remaining days
+        cost = firstTenDaysCost + secondTenDaysCost + restOfTheDaysCost; // calculating total cost
     }
     return cost;
 }
 
-let result_3 = hotelCost(25);
+let result_3 = hotelCost(71);
 if (typeof result_3 === "undefined") /*checking result is defined or undefined */ {
     console.log("Given input is invalid thats why result is undefined!!");
 }
 else {
     console.log(result_3);
+}
+
+
+
+
+
+function megaFriend(friends) {
+    let value = Array.isArray(friends);
+    if (value == false || friends == "") /*check if input is valid or not*/ {
+        return console.log("Invalid input !!");
+    }
+    let joinAllElemets = friends.join('');// join all elements in the array
+    regEx = /^[A-Za-z]+$/; // this expression only allows alphabets
+    if (!regEx.test(joinAllElemets)) /* checking the array contain only alphabet or not */{
+        return console.log("Check input");
+    }
+    let maxName = "";
+    for (let i = 0; i < friends.length; i++) {
+        if (friends[i].length > maxName.length) {
+            maxName = friends[i]; // saving the maxLength name in the variable
+        }
+    }
+    return maxName;
+}
+
+var result_4 = megaFriend(["Jihad", "asdasasdasdsdsadsad"]);
+if (typeof result_4 === "undefined") /*checking result is defined or undefined */ {
+    console.log("Given input is invalid thats why result is undefined!!");
+}
+else {
+    console.log(result_4);
 }
